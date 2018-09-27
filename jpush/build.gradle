@@ -1,0 +1,44 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+
+    buildTypes {
+        release {
+            zipAlignEnabled true
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+    }
+    repositories {
+        flatDir {
+            dirs 'libs'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    implementation var.SupportAppcompatV7
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation var.SupportTestRunner
+    androidTestImplementation var.SupportTestEspresso
+
+    api(name: 'HMSSdk-base-2.6.0.301', ext: 'aar')
+    api(name: 'HMSSdk-push-2.6.0.301', ext: 'aar')
+    api(name: 'push-internal-3.3.170426-20170427.081757-1', ext: 'aar')
+}
