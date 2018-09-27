@@ -18,9 +18,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // TODO: 2018/9/27   phone = ...
+        // TODO: 2018/9/27   phone = ...  Alias 设置1个即可
         ZgPushUtil.setAlias(this.getApplicationContext(), "phone");
-        // TODO: 2018/9/27   project_uid 赋值
+        // TODO: 2018/9/27   project_uid 赋值，  project_uid数组即为 推送的 多个Tag
 //        project_uid = data.getProject_uid();
 
     }
